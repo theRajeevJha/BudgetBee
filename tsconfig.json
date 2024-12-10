@@ -1,7 +1,13 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "typeRoots": ["./node_modules/@types", "./@types"],
+    "target": "ES2015",  // Set the target to ES2015 or later
+    "lib": ["ES2015", "DOM"],  // Include ES2015 and DOM libraries
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "strict": true,
+    "jsx": "react-jsx",  // Enable JSX support for React 17+
     "paths": {
       "@/*": [
         "./*"
