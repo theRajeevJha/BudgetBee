@@ -24,7 +24,6 @@ jobs:
       - name: Log in to Expo
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: eas login
 
       - name: Build app
         env:
