@@ -26,4 +26,4 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           SUPABASE_DB_KEY: ${{ secrets.SUPABASE_DB_KEY }}
-        run: EXPO_TOKEN=${{ secrets.EXPO_TOKEN }} eas build --platform all --non-interactive
+        run:  eas build --platform all --non-interactive
