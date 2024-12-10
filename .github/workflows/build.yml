@@ -24,10 +24,10 @@ jobs:
       - name: Log in to Expo
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: eas login --token $EXPO_TOKEN
+        run: eas login
 
       - name: Build app
         env:
-          API_URL: ${{ secrets.API_URL }}
-          API_KEY: ${{ secrets.API_KEY }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_DB_KEY: ${{ secrets.SUPABASE_DB_KEY }}
         run: eas build --platform all --non-interactive
