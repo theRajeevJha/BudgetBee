@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "food-app",
-    "slug": "food-app",
+    "slug": "budgetbee",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -31,6 +31,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "33acc4d5-9abd-47e7-a93a-e0c2ad596ec2"
+      }
+    },
+    "owner": "ganeshbhau"
   }
 }

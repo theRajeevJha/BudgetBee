@@ -3,7 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from 'reac
 import { LinearGradient } from 'expo-linear-gradient';
 import { Picker } from '@react-native-picker/picker';
 import Svg, { Rect, Circle, Path } from 'react-native-svg'; // Importing necessary SVG elements
-import { addExpense } from '../repository/expenseRepo';
+import ExpenseService from "../service/ExpenseService"
+import { Expense } from '../model/expense';
 
 // Dynamic categories with emojis
 const categories = [
@@ -12,6 +13,8 @@ const categories = [
   { label: '📱 Mobile', value: 'Mobile', emoji: '📱' },
   { label: '🎭 Entertainment', value: 'Entertainment', emoji: '🎭' },
 ];
+
+const expenseService = ExpenseService.getInstance();
 
 export default function AddExpense() {
   const [category, setCategory] = useState(categories[0].value);
@@ -24,11 +27,17 @@ export default function AddExpense() {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
+    
+    const newExpense = new Expense({
+      user_id: 'b8ca07a1-5186-4c57-ad25-e1b623bc165e',  // Replace with actual user ID from your app
+      amount: parseFloat(price), // Convert price string to number
+      category,
+      name: itemName,
+      updated_at: new Date(),  // Set current date as updated_at
+    });
 
-    console.log("item added!")
-    const newExpense = addExpense(category, itemName, price); // Use the repo method to add expense
+    expenseService.addExpense(newExpense); // Use the repo method to add expense
     Alert.alert('Success', `Expense added in ${category}!`);
-
     // Clear inputs after adding expense
     setItemName('');
     setPrice('');
