@@ -1,14 +1,15 @@
 import { Expense } from "../model/expense";
 import { IExpenseRepo } from "./IExpenseRepo";
 import { createClient, SupabaseClient } from "@supabase/supabase-js"; // Import Supabase client
+import { SUPABASE_DB_URL, SUPABASE_DB_KEY} from "@env"
 
 // Initialize Supabase client
 
 class SupabaseExpenseRepo implements IExpenseRepo {
-  private supabase : SupabaseClient
+  private readonly supabase : SupabaseClient
 
    constructor() {
-     this.supabase = createClient("https://efpxfvokufzuuqipqujw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVmcHhmdm9rdWZ6dXVxaXBxdWp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM3NjgxNDEsImV4cCI6MjA0OTM0NDE0MX0.--mB2x0M0ctMWYWgLkI-FF0zZEhyNWRvV_D8QY7ItnQ");
+     this.supabase = createClient(SUPABASE_DB_URL, SUPABASE_DB_KEY);
   }
 
   public async addExpense(expense: Expense): Promise<void> {
